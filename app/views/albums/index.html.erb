@@ -1,0 +1,21 @@
+<div class="container show-box">
+	<div class="row">
+ <% @albums.each{|album| %>
+ <% owner = @users.find { |u| u['id'] == album['userId'] } %>
+<%# byebug %>
+<div class="col p-card">
+<div class="card" style="width: 18rem;">
+         <img class="card-img-top" src="https://www.thesprucepets.com/thmb/meRd41is751DsQQjofaiKV_ZUBg=/941x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/cat-talk-eyes-553942-hero-df606397b6ff47b19f3ab98589c3e2ce.jpg" alt="Card image cap">
+  <div class="card-body">
+  	<%= link_to 'Read More',album_info_path(album['id'],:author_id => owner['id']),:class => "read_m" %>
+  	<%= link_to 'user_info',user_info_path(owner['id']),:class => "read_m" %>
+    <h5 class="card-title"><%= album['title'] %></h5>
+    <!-- < p class="card-text"><%#= owner['name'] %></p> -->
+
+    <a href="" class="btn"><%= owner['name'] %></a>
+  </div>
+</div>
+</div>
+ <% } %>
+</div>
+</div>
