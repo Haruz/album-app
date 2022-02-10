@@ -1,36 +1,22 @@
 class AlbumsController < ApplicationController
 
 include HTTParty
+include ApplicationHelper
+
 
   def index
-
-  	album_api_url = 'https://jsonplaceholder.typicode.com/albums'
-  	album_response = HTTParty.get(album_api_url)
-    @albums = JSON.parse(album_response.body)
-
-    user_api_url = 'https://jsonplaceholder.typicode.com/users'
-  	user_response = HTTParty.get(user_api_url)
-    @users = JSON.parse(user_response.body)
-
-  	#byebug
-  	#json = JSON.parse(response.body)
+  	 albums = fetch_all_albums
+  	 @pagy_a, @albums = pagy_array(albums, items: 10)
+     @users = fetch_all_authors
   end
 
   def show
 
-  	album = params['id']
-  	author = params['author_id']
+  	album_id = params['id']
+  	author_id = find_author(album_id)
 
-
-  	photo_api_url = "https://jsonplaceholder.typicode.com/photos?albumId=#{album}"
-  	  	photo_response = HTTParty.get(photo_api_url)
-    	@photos = JSON.parse(photo_response.body)
-  	
-  	author_api_url = "https://jsonplaceholder.typicode.com/users/#{author}"
-  		author_response = HTTParty.get(author_api_url)
-    	@author = JSON.parse(author_response.body)
-
-
+  	photos = fetch_photos(album_id)
+	@author = fetch_author(author_id)
+  	@pagy_a, @photos = pagy_array(photos, items: 10)
   end
-
 end

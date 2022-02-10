@@ -1,51 +1,15 @@
 <div>
-<!-- <h1 class="user_title"><%#= @author['name'] %></h1> -->
-<table class="table user_table">
-	<tr>
-		<td>author name</td>
-		<td><%= @author['name'] %></td>
-	</tr>
-	<tr>
-		<td>username</td>
-		<td><%= @author['username'] %></td>
-	</tr>
-	<tr>
-		<td>email</td>
-		<td><%= @author['email'] %></td>
-	</tr>
-	<tr>
-		<td>phone</td>
-		<td><%= @author['phone'] %></td>
-	</tr>
-	<tr>
-		<td>website</td>
-		<td><%= @author['website'] %></td>
-	</tr>
-<% @author['address'].each{|address_info| %>
-<tr>
-<% if address_info[0] === "geo" %>
-<td><%= address_info[0] %></td><td>lat: <%= address_info[1]['lat'] %><br> lng: <%= address_info[1]['lng'] %></td>
-<% else %>
-<td><%= address_info[0] %></td><td><%= address_info[1] %></td>
-<% end %>
-</tr>
-<% } %>
-<% @author['company'].each{|company_info| %>
- <tr>
-<td>company <%= company_info[0] %></td><td><%= company_info[1] %></td>
-</tr>
-<% } %>
-</table>
+	<h2 class="user_title">Author</h2>
+	<table class="table user_table">
+	<%= render "albums/author_contact_info" %> 
+	<% @author['company'].each{|company_info| %>
+ 		<tr>
+			<td>company <%= company_info[0] %></td><td><%= company_info[1] %></td>
+		</tr>
+	<% } %>
+	</table>
 </div>
 <div>
-	<table class="table album_title_table"> 
- <% @albums.each{|album| %>
- <% album_name = album["title"] %>
- 	<tr>
- 		<td>
-  			<%= link_to "#{album_name}",album_info_path(album['id']),:class => "read_m" %>
-  		</td>
- 	</tr>
- <% } %>
-</table>
+	<h2 class="user_title">Albums</h2>
+	<%= render "users/author_albums" %> 
 </div>

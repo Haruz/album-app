@@ -29,6 +29,7 @@ gem "jbuilder"
 
 gem "httparty"
 gem 'byebug', '~> 11.1', '>= 11.1.3'
+gem 'pagy', '~> 5.10'
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 

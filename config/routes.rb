@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
 #album routes	
-  get "/albums", to: "albums#index"
+  get "/albums", to: "albums#index" 
   get 'albums/:id', to: 'albums#show', as: :album_info
 #user routes
   get "/users", to: "users#index"

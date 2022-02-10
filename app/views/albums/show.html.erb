@@ -1,57 +1,8 @@
+<h2 class="user_title">Author</h2>
 <div>
-<!-- <h1 class="user_title"><%= @author['name'] %></h1> -->
-<table class="table user_table">
-	<tr>
-		<td>author name</td>
-		<td><%= @author['name'] %></td>
-	</tr>
-	<tr>
-		<td>username</td>
-		<td><%= @author['username'] %></td>
-	</tr>
-	<tr>
-		<td>email</td>
-		<td><%= @author['email'] %></td>
-	</tr>
-	<tr>
-		<td>phone</td>
-		<td><%= @author['phone'] %></td>
-	</tr>
-	<tr>
-		<td>website</td>
-		<td><%= @author['website'] %></td>
-	</tr>
-<% @author['address'].each{|address_info| %>
-<tr>
-<% if address_info[0] === "geo" %>
-<td><%= address_info[0] %></td><td>lat: <%= address_info[1]['lat'] %><br> lng: <%= address_info[1]['lng'] %></td>
-<% else %>
-<td><%= address_info[0] %></td><td><%= address_info[1] %></td>
-<% end %>
-</tr>
-<% } %>
-<%# @author['company'].each{|company_info| %>
-<!-- <tr>
-<td>company <%#= company_info[0] %></td><td><%#= company_info[1] %></td>
-</tr> -->
-<%# } %>
-</table>
+	<table class="table user_table">
+<%= render "albums/author_contact_info" %> 
+	</table>
 </div>
-<div>
-	<h2 class="user_title">Photos</h2>
-	<div class="container show-box">
-	<div class="row">
-	<% @photos.each{|photo| %>
-		<% img = photo["url"] %>
-		<div class="col p-card">
-		<div class="card" style="width: 18rem;">
-         <img class="card-img-top" src="<%= img %>" alt="Card image cap">
-  <div class="card-body">
-    <h5 class="card-title"><%= photo['title'] %></h5>
-  </div>
-</div>
-</div>
-	<% } %>
-	</div>
-	</div>
-</div>
+<h2 class="user_title">Photos</h2>
+<%= render "albums/photo_list" %> 

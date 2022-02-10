@@ -1,0 +1,16 @@
+<%== pagy_nav(@pagy_a) %>
+<div class="container show-box">
+	<div class="row">
+	<% @photos.each{|photo| %>
+	<% img = photo["url"] %>
+		<div class="col p-card">
+			<div class="card" style="width: 18rem;">
+         	<img class="card-img-top" src="<%= img %>" alt="Card image cap">
+  				<div class="card-body">
+    			<h5 class="card-title"><%= photo['title'] %></h5>
+  				</div>
+			</div>
+		</div>
+	<% } %>
+	</div>
+</div>
